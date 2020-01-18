@@ -1,0 +1,60 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<form class="form-group" method="post">
+
+
+    <div>
+        <label>Vize Notu : </label>
+        <input type="text" class="form-control" name="sayi1" />
+    </div>
+
+    <div>
+        <label>Final Notu : </label>
+        <input type="text" class="form-control" name="sayi2" />
+    </div>
+
+    <div style="margin-top:10px">
+        <button class="btn btn-info">Hesapla</button>
+
+    </div>
+
+</form>
+
+<form class="form-group" method="get">
+
+    <div>
+        <p class="font-weight-bolder">SONUÇ :  @ViewBag.total </p>
+    </div>
+
+    <div>
+
+        @if (ViewBag.total == 0)
+        {
+
+            <div class="alert alert-info" role="alert">
+                Lütfen Vize ve Final Notlarınızı Giriniz...
+            </div>
+
+        }
+        else if (ViewBag.total < 40)
+        {
+            <div class="alert alert-danger" role="alert">
+                Başarısız....
+            </div>
+        }
+        else
+        {
+            <div class="alert alert-success" role="alert">
+                Başarılı...
+            </div>
+        }
+
+    </div>
+</form>
+
+
