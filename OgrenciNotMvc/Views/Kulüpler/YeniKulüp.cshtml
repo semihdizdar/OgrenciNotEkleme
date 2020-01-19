@@ -1,4 +1,4 @@
-﻿
+﻿@model OgrenciNotMvc.Models.EntityFramework.TBLKULUPLER
 @{
     ViewBag.Title = "YeniKulüp";
     Layout = "~/Views/Shared/_Layout.cshtml";
@@ -8,12 +8,16 @@
 
         <div>
             <label>Kulüp Adi</label>
-            <input type="text" class="form-control" name="KULUPADİ" />
+            @Html.TextBoxFor(m=>m.KULUPADİ , new {@class="form-control" })
+            @Html.ValidationMessageFor(m=>m.KULUPADİ, "" , new { style="color:red"})
+            @*<input type="text" class="form-control" name="KULUPADİ" />*@
         </div>
 
         <div>
             <label>Kontenjan Miktarı</label>
-            <input type="text" class="form-control" name="KULUPKONTENJAN" />
+            @Html.TextBoxFor(m=>m.KULUPKONTENJAN, new { @class="form-control"})
+            @Html.ValidationMessageFor(m=>m.KULUPKONTENJAN, "", new { @style="color:red"})
+            @*<input type="text" class="form-control" name="KULUPKONTENJAN" />*@
         </div>
 
         <div style="margin-top:10px">

@@ -9,8 +9,9 @@
 
     <div class="form-group">
 
-        @Html.LabelFor(m=>m.DERSADI)
-        @Html.TextBoxFor(m=>m.DERSADI)
+        <label>Ders Adi</label>
+        @Html.TextBoxFor(m => m.DERSADI, new { @class = "form-control" })
+        @Html.ValidationMessageFor(m => m.DERSADI, "", new { @style = "color:red" })
 
     </div>
     @Html.HiddenFor(m => m.DERSID);

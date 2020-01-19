@@ -4,21 +4,30 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<form method="post" class="form-group">
+@using (Html.BeginForm("OgrenciEkle", "OgrenciListesi", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
 
     <div>
         <label>Ogrenci Adi</label>
-        <input type="text" class="form-control" name="OGRAD" />
+        @Html.TextBoxFor(m => m.OGRAD, new { @class = "form-control" })
+        @Html.ValidationMessageFor(m => m.OGRAD, "", new { @style = "color:red" })
+
     </div>
 
     <div>
         <label>Ogrenci Soyad</label>
-        <input type="text" class="form-control" name="OGRSOYAD" />
+        @Html.TextBoxFor(m => m.OGRSOYAD, new { @class = "form-control" })
+        @Html.ValidationMessageFor(m => m.OGRSOYAD, "", new { @style = "color:red" })
+
     </div>
 
+
+
+    @TempData["result"] //Dosya upload sonucu burada yazacak.
     <div>
-        <label>Ogrenci Fotoğraf</label>
-        <input type="text" class="form-control" name="OGRFOTOGRAF" />
+        <input type="file" name="file" class="button" />
+        <input type="submit" value="Gönder" class="button" />
+
     </div>
 
     <div>
@@ -26,25 +35,30 @@
 
         @Html.DropDownList("OGRCİNSİYET",
 
-        new[]
-        {
+         new[]
+         {
             new SelectListItem() {Value="1", Text="Erkek"},
             new SelectListItem() {Value="2", Text = "Bayan"}
-        }
+         }
 
-        , "Cinsiyet Seçiniz...", new { @class = "form-control" })
+         , "Cinsiyet Seçiniz...", new { @class = "form-control" })
+
+        <br />
+        @Html.ValidationMessageFor(m => m.OGRCİNSİYET, "", new { style = "color:red" })
 
     </div>
 
     <div>
         <label>Ogrenci Kulüp</label>
-        @Html.DropDownListFor(m => m.TBLKULUPLER.KULUPADİ, (List<SelectListItem>)ViewBag.dgr,  new { @class = "form-control" })
+        @Html.DropDownList("secilenKulup", (List<SelectListItem>)ViewBag.dgr, new { @class = "form-control" })
+
+
     </div>
 
 
 
     <div style="margin-top:10px">
-        <button class="btn btn-info">Kulup Ekle</button>
+        <button class="btn btn-info" type="submit">Kaydet</button>
 
     </div>
-</form>
+}

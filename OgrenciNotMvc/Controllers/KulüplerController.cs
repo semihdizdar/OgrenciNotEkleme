@@ -26,6 +26,11 @@ namespace OgrenciNotMvc.Controllers
         [HttpPost]
         public ActionResult YeniKulüp(TBLKULUPLER p)
         {
+            if (!ModelState.IsValid)
+            {
+                return View("YeniKulüp");
+            }
+
             db.TBLKULUPLER.Add(p);
             db.SaveChanges();
             return RedirectToAction("Index");
@@ -33,9 +38,16 @@ namespace OgrenciNotMvc.Controllers
 
         public ActionResult Sil(int id)
         {
-            var kulup = db.TBLKULUPLER.Find(id);
-            db.TBLKULUPLER.Remove(kulup);
-            db.SaveChanges();
+            try
+            {
+                var kulup = db.TBLKULUPLER.Find(id);
+                db.TBLKULUPLER.Remove(kulup);
+                db.SaveChanges();
+            }
+            catch (Exception ex)
+            {
+                System.Diagnostics.Debug.Write(string.Format("SEMİH!!! {0}{1}", ex.Message, ex.InnerException));
+            }
             return RedirectToAction("Index");
         }
 
@@ -48,10 +60,16 @@ namespace OgrenciNotMvc.Controllers
 
         public ActionResult Guncelle(TBLKULUPLER p)
         {
+
+            //if (!ModelState.IsValid)
+            //{
+            //    return View("Index");
+            //}   
+
             var klp = db.TBLKULUPLER.Find(p.KULUPID);
             klp.KULUPADİ = p.KULUPADİ;
             db.SaveChanges();
-            return RedirectToAction("Index","Kulüpler");
+            return RedirectToAction("Index", "Kulüpler");
         }
     }
 }

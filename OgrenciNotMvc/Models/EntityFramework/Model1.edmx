@@ -25,8 +25,8 @@
             <PropertyRef Name="NOTID" />
           </Key>
           <Property Name="NOTID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="DERSID" Type="tinyint" />
-          <Property Name="OGRID" Type="int" />
+          <Property Name="DERSID" Type="tinyint" Nullable="false" />
+          <Property Name="OGRID" Type="int" Nullable="false" />
           <Property Name="SINAV1" Type="tinyint" />
           <Property Name="SINAV2" Type="tinyint" />
           <Property Name="SINAV3" Type="tinyint" />
@@ -44,9 +44,10 @@
           <Property Name="OGRFOTOGRAF" Type="varchar" MaxLength="20" />
           <Property Name="OGRCİNSİYET" Type="varchar" MaxLength="5" />
           <Property Name="OGRKULUP" Type="tinyint" />
+          <Property Name="OGRTAMAD" Type="varchar" MaxLength="41" StoreGeneratedPattern="Computed" />
         </EntityType>
         <Association Name="FK_TBLNOTLAR_TBLDERSLER">
-          <End Role="TBLDERSLER" Type="Self.TBLDERSLER" Multiplicity="0..1" />
+          <End Role="TBLDERSLER" Type="Self.TBLDERSLER" Multiplicity="1" />
           <End Role="TBLNOTLAR" Type="Self.TBLNOTLAR" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="TBLDERSLER">
@@ -58,7 +59,7 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_TBLNOTLAR_TBLOGRENCİLER">
-          <End Role="TBLOGRENCİLER" Type="Self.TBLOGRENCİLER" Multiplicity="0..1" />
+          <End Role="TBLOGRENCİLER" Type="Self.TBLOGRENCİLER" Multiplicity="1" />
           <End Role="TBLNOTLAR" Type="Self.TBLNOTLAR" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="TBLOGRENCİLER">
@@ -69,7 +70,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_TBLOGRENCİLER_TBLKULUPLER1">
+        <Association Name="FK_TBLOGRENCİLER_TBLKULUPLER">
           <End Role="TBLKULUPLER" Type="Self.TBLKULUPLER" Multiplicity="0..1" />
           <End Role="TBLOGRENCİLER" Type="Self.TBLOGRENCİLER" Multiplicity="*" />
           <ReferentialConstraint>
@@ -94,7 +95,7 @@
             <End Role="TBLOGRENCİLER" EntitySet="TBLOGRENCİLER" />
             <End Role="TBLNOTLAR" EntitySet="TBLNOTLAR" />
           </AssociationSet>
-          <AssociationSet Name="FK_TBLOGRENCİLER_TBLKULUPLER1" Association="Self.FK_TBLOGRENCİLER_TBLKULUPLER1">
+          <AssociationSet Name="FK_TBLOGRENCİLER_TBLKULUPLER" Association="Self.FK_TBLOGRENCİLER_TBLKULUPLER">
             <End Role="TBLKULUPLER" EntitySet="TBLKULUPLER" />
             <End Role="TBLOGRENCİLER" EntitySet="TBLOGRENCİLER" />
           </AssociationSet>
@@ -119,15 +120,15 @@
           <Property Name="KULUPID" Type="Byte" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="KULUPADİ" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
           <Property Name="KULUPKONTENJAN" Type="Int16" />
-          <NavigationProperty Name="TBLOGRENCİLER" Relationship="Self.FK_TBLOGRENCİLER_TBLKULUPLER1" FromRole="TBLKULUPLER" ToRole="TBLOGRENCİLER" />
+          <NavigationProperty Name="TBLOGRENCİLER" Relationship="Self.FK_TBLOGRENCİLER_TBLKULUPLER" FromRole="TBLKULUPLER" ToRole="TBLOGRENCİLER" />
         </EntityType>
         <EntityType Name="TBLNOTLAR">
           <Key>
             <PropertyRef Name="NOTID" />
           </Key>
           <Property Name="NOTID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="DERSID" Type="Byte" />
-          <Property Name="OGRID" Type="Int32" />
+          <Property Name="DERSID" Type="Byte" Nullable="false" />
+          <Property Name="OGRID" Type="Int32" Nullable="false" />
           <Property Name="SINAV1" Type="Byte" />
           <Property Name="SINAV2" Type="Byte" />
           <Property Name="SINAV3" Type="Byte" />
@@ -144,14 +145,15 @@
           <Property Name="OGRENCIID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="OGRAD" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
           <Property Name="OGRSOYAD" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
-          <Property Name="OGRFOTOGRAF" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="OGRFOTOGRAF" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
           <Property Name="OGRCİNSİYET" Type="String" MaxLength="5" FixedLength="false" Unicode="false" />
           <Property Name="OGRKULUP" Type="Byte" />
-          <NavigationProperty Name="TBLKULUPLER" Relationship="Self.FK_TBLOGRENCİLER_TBLKULUPLER1" FromRole="TBLOGRENCİLER" ToRole="TBLKULUPLER" />
+          <Property Name="OGRTAMAD" Type="String" MaxLength="41" FixedLength="false" Unicode="false" annotation:StoreGeneratedPattern="Computed" />
+          <NavigationProperty Name="TBLKULUPLER" Relationship="Self.FK_TBLOGRENCİLER_TBLKULUPLER" FromRole="TBLOGRENCİLER" ToRole="TBLKULUPLER" />
           <NavigationProperty Name="TBLNOTLAR" Relationship="Self.FK_TBLNOTLAR_TBLOGRENCİLER" FromRole="TBLOGRENCİLER" ToRole="TBLNOTLAR" />
         </EntityType>
         <Association Name="FK_TBLNOTLAR_TBLDERSLER">
-          <End Role="TBLDERSLER" Type="Self.TBLDERSLER" Multiplicity="0..1" />
+          <End Role="TBLDERSLER" Type="Self.TBLDERSLER" Multiplicity="1" />
           <End Role="TBLNOTLAR" Type="Self.TBLNOTLAR" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="TBLDERSLER">
@@ -162,7 +164,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_TBLOGRENCİLER_TBLKULUPLER1">
+        <Association Name="FK_TBLOGRENCİLER_TBLKULUPLER">
           <End Role="TBLKULUPLER" Type="Self.TBLKULUPLER" Multiplicity="0..1" />
           <End Role="TBLOGRENCİLER" Type="Self.TBLOGRENCİLER" Multiplicity="*" />
           <ReferentialConstraint>
@@ -175,7 +177,7 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_TBLNOTLAR_TBLOGRENCİLER">
-          <End Role="TBLOGRENCİLER" Type="Self.TBLOGRENCİLER" Multiplicity="0..1" />
+          <End Role="TBLOGRENCİLER" Type="Self.TBLOGRENCİLER" Multiplicity="1" />
           <End Role="TBLNOTLAR" Type="Self.TBLNOTLAR" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="TBLOGRENCİLER">
@@ -186,7 +188,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityContainer Name="DbMvcOkulEntities4" annotation:LazyLoadingEnabled="true">
+        <EntityContainer Name="DbMvcOkulEntities5" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="TBLDERSLER" EntityType="Self.TBLDERSLER" />
           <EntitySet Name="TBLKULUPLER" EntityType="Self.TBLKULUPLER" />
           <EntitySet Name="TBLNOTLAR" EntityType="Self.TBLNOTLAR" />
@@ -195,7 +197,7 @@
             <End Role="TBLDERSLER" EntitySet="TBLDERSLER" />
             <End Role="TBLNOTLAR" EntitySet="TBLNOTLAR" />
           </AssociationSet>
-          <AssociationSet Name="FK_TBLOGRENCİLER_TBLKULUPLER1" Association="Self.FK_TBLOGRENCİLER_TBLKULUPLER1">
+          <AssociationSet Name="FK_TBLOGRENCİLER_TBLKULUPLER" Association="Self.FK_TBLOGRENCİLER_TBLKULUPLER">
             <End Role="TBLKULUPLER" EntitySet="TBLKULUPLER" />
             <End Role="TBLOGRENCİLER" EntitySet="TBLOGRENCİLER" />
           </AssociationSet>
@@ -209,7 +211,7 @@
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-        <EntityContainerMapping StorageEntityContainer="DbMvcOkulModelStoreContainer" CdmEntityContainer="DbMvcOkulEntities4">
+        <EntityContainerMapping StorageEntityContainer="DbMvcOkulModelStoreContainer" CdmEntityContainer="DbMvcOkulEntities5">
           <EntitySetMapping Name="TBLDERSLER">
             <EntityTypeMapping TypeName="DbMvcOkulModel.TBLDERSLER">
               <MappingFragment StoreEntitySet="TBLDERSLER">
@@ -251,6 +253,7 @@
                 <ScalarProperty Name="OGRFOTOGRAF" ColumnName="OGRFOTOGRAF" />
                 <ScalarProperty Name="OGRCİNSİYET" ColumnName="OGRCİNSİYET" />
                 <ScalarProperty Name="OGRKULUP" ColumnName="OGRKULUP" />
+                <ScalarProperty Name="OGRTAMAD" ColumnName="OGRTAMAD" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

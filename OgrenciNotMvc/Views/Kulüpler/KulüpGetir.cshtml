@@ -12,8 +12,11 @@
 
         @Html.LabelFor(m => m.KULUPADİ)
         @Html.TextBoxFor(m => m.KULUPADİ, new {@class="form-control"})
+        @Html.ValidationMessageFor(m=>m.KULUPADİ, "" , new { @style="color:red"})
     </div> 
+
     @Html.HiddenFor(m => m.KULUPID);
+
     <div style="margin-top:15px">
 
         <button class="btn btn-info">Güncelle</button>

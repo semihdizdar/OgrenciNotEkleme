@@ -26,6 +26,11 @@ namespace OgrenciNotMvc.Controllers
         [HttpPost]
         public ActionResult YeniKayit(TBLDERSLER p)
         {
+
+            if (!ModelState.IsValid)
+            {
+                return View("YeniKayit");
+            }
             db.TBLDERSLER.Add(p);
             db.SaveChanges();
             return View();
@@ -33,9 +38,16 @@ namespace OgrenciNotMvc.Controllers
 
         public ActionResult Sil(int id)
         {
-            var ders = db.TBLDERSLER.Find(id);
-            db.TBLDERSLER.Remove(ders);
-            db.SaveChanges();
+            try
+            {
+                var ders = db.TBLDERSLER.Find(id);
+                db.TBLDERSLER.Remove(ders);
+                db.SaveChanges();
+            }
+            catch (Exception excep)
+            {
+                System.Diagnostics.Debug.WriteLine(string.Format("Custom exception Semih: {0}\n{1}", excep.Message, excep.InnerException));
+            }
             return RedirectToAction("Index");
         }
 
@@ -49,6 +61,12 @@ namespace OgrenciNotMvc.Controllers
 
         public ActionResult Guncelle(TBLDERSLER p)
         {
+
+            if (!ModelState.IsValid)
+            {
+                return View("DersGetir");
+            }
+
             var dersler = db.TBLDERSLER.Find(p.DERSID);
             dersler.DERSADI = p.DERSADI;
             db.SaveChanges();

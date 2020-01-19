@@ -11,7 +11,8 @@ namespace OgrenciNotMvc.Models.EntityFramework
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.ComponentModel.DataAnnotations;
+
     public partial class TBLOGRENCİLER
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
@@ -21,11 +22,17 @@ namespace OgrenciNotMvc.Models.EntityFramework
         }
     
         public int OGRENCIID { get; set; }
+
+        [Required(ErrorMessage = "Ogrenci Adı Boş Geçemez...")]
         public string OGRAD { get; set; }
+        [Required(ErrorMessage = "Ogrenci Soyad Boş Geçemez...")]
         public string OGRSOYAD { get; set; }
+
         public string OGRFOTOGRAF { get; set; }
+        [Required(ErrorMessage = "Cinsiyet Alanı Boş Geçemez...")]
         public string OGRCİNSİYET { get; set; }
         public Nullable<byte> OGRKULUP { get; set; }
+        public string OGRTAMAD { get; set; }
     
         public virtual TBLKULUPLER TBLKULUPLER { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

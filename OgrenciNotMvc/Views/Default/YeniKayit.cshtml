@@ -1,4 +1,4 @@
-﻿
+﻿@model OgrenciNotMvc.Models.EntityFramework.TBLDERSLER
 @{
     ViewBag.Title = "YeniKayit";
     Layout = "~/Views/Shared/_Layout.cshtml";
@@ -8,8 +8,11 @@
 
     <div>
         <label>Ders Adi</label>
-        <input type="text" class="form-control" name="DERSADI" />
+        @Html.TextBoxFor(m => m.DERSADI, new { @class="form-control"})
+        @Html.ValidationMessageFor(m => m.DERSADI, "" , new { @style ="color:red"})
+       
     </div>
+    
     <div style="margin-top:10px">
         <button class="btn btn-info">Ders Ekle</button>
 

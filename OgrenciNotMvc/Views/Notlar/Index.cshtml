@@ -1,5 +1,7 @@
 ﻿@using OgrenciNotMvc.Models.EntityFramework
 @model List<TBLNOTLAR>
+
+
 @{
     ViewBag.Title = "Index";
     Layout = "~/Views/Shared/_Layout.cshtml";
@@ -7,10 +9,10 @@
 
 <table class="table table-bordered">
     <tr>
-        
-        <th> OGRENCİ ID</th>
-        <th>Ogrenci ADI</th>
-        <th>DERS ADI</th>
+
+        <th>Öğrenci ID</th>
+        <th>Adı Soyadı</th>
+        <th>Ders Adı</th>
         <th>VİZE</th>
         <th>VİZE 2</th>
         <th>FİNAL </th>
@@ -22,20 +24,20 @@
     <tbody>
         @foreach (var notlar in Model)
         {
-            <tr>
-                
-                <td>@notlar.OGRID</td>
-                <td>@notlar.TBLOGRENCİLER.OGRAD</td>
-                <td>@notlar.TBLDERSLER.DERSADI</td>
-                <td>@notlar.SINAV1</td>
-                <td>@notlar.SINAV2</td>
-                <td>@notlar.SINAV3</td>
-                <td>@notlar.PROJE</td>
-                <td>@notlar.ORTALAMA</td>
-                <td>@notlar.DURUM</td>
-                <td> <a href="/Notlar/NotGetir/@notlar.NOTID" class="btn btn-warning">Güncelle</a></td>
+        <tr>
 
-            </tr>
+            <td>@notlar.OGRID</td>
+            <td>@notlar.TBLOGRENCİLER.OGRTAMAD</td>
+            <td>@notlar.TBLDERSLER.DERSADI</td>
+            <td>@notlar.SINAV1</td>
+            <td>@notlar.SINAV2</td>
+            <td>@notlar.SINAV3</td>
+            <td>@notlar.PROJE</td>
+            <td>@notlar.ORTALAMA</td>
+            <td>@notlar.DURUM</td>
+            <td> <a href="/Notlar/NotGetir/@notlar.NOTID" class="btn btn-warning">Güncelle</a></td>
+
+        </tr>
         }
 
     </tbody>

@@ -6,30 +6,36 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<table class="table table-bordered">
-    <tr>
-        <th>KULUP ID</th>
-        <th>KULUP ADI</th>
-        <th>KULUP KONTENJAN</th>
-        <th>İşlemler</th>
-    </tr>
-    <tbody>
-        @foreach(var kulup in Model)
-        {
-        <tr>
-            <td> @kulup.KULUPID</td>
-            <td>@kulup.KULUPADİ</td>
-            <td>@kulup.KULUPKONTENJAN</td>
-            <td><a href="/Kulüpler/Sil/@kulup.KULUPID" class="btn btn-danger">Sil</a>
-                <a href="/Kulüpler/KulüpGetir/@kulup.KULUPID" class="btn btn-warning">Güncelle</a>
-            </td>
-            
+    <div class="row">
+        <div class="col-md-12">
+            <table class="table table-bordered">
+                <tr>
+                    <th>KULUP ID</th>
+                    <th>KULUP ADI</th>
+                    <th>KULUP KONTENJAN</th>
+                    <th>İşlemler</th>
+                </tr>
+                <tbody>
+                    @foreach (var kulup in Model)
+                    {
+                        <tr>
+                            <td> @kulup.KULUPID</td>
+                            <td>@kulup.KULUPADİ</td>
+                            <td>@kulup.KULUPKONTENJAN</td>
+                            <td>
+                                <a href="/Kulüpler/Sil/@kulup.KULUPID" class="btn btn-danger">Sil</a>
+                                <a href="/Kulüpler/KulüpGetir/@kulup.KULUPID" class="btn btn-warning">Güncelle</a>
+                            </td>
 
-        </tr>
-        }
 
-    </tbody>
-</table>
+                        </tr>
+                    }
 
-<a href="/Kulüpler/YeniKulüp" class="btn btn-primary">Yeni Kulüp</a>
+                </tbody>
+            </table>
 
+            <a href="/Kulüpler/YeniKulüp" class="btn btn-primary">Yeni Kulüp</a>
+        </div>
+    </div>
+
+<br />

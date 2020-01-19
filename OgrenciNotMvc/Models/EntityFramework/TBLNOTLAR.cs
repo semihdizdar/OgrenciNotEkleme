@@ -15,8 +15,8 @@ namespace OgrenciNotMvc.Models.EntityFramework
     public partial class TBLNOTLAR
     {
         public int NOTID { get; set; }
-        public Nullable<byte> DERSID { get; set; }
-        public Nullable<int> OGRID { get; set; }
+        public byte DERSID { get; set; }
+        public int OGRID { get; set; }
         public Nullable<byte> SINAV1 { get; set; }
         public Nullable<byte> SINAV2 { get; set; }
         public Nullable<byte> SINAV3 { get; set; }

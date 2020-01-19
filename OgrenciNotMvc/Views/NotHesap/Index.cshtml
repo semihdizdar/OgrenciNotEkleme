@@ -33,21 +33,13 @@
 
     <div>
 
-        @if (ViewBag.total == 0)
-        {
-
-            <div class="alert alert-info" role="alert">
-                Lütfen Vize ve Final Notlarınızı Giriniz...
-            </div>
-
-        }
-        else if (ViewBag.total < 40)
+        @if (ViewBag.total < 40 && ViewBag.total > 0)
         {
             <div class="alert alert-danger" role="alert">
                 Başarısız....
             </div>
         }
-        else
+        else if(ViewBag.total >= 40)
         {
             <div class="alert alert-success" role="alert">
                 Başarılı...
