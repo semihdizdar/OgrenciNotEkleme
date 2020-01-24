@@ -4,26 +4,27 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-    <form method="post" class="form-group">
+<form method="post" class="form-group">
 
-        <div>
-            <label>Kulüp Adi</label>
-            @Html.TextBoxFor(m=>m.KULUPADİ , new {@class="form-control" })
-            @Html.ValidationMessageFor(m=>m.KULUPADİ, "" , new { style="color:red"})
-            @*<input type="text" class="form-control" name="KULUPADİ" />*@
-        </div>
+    <div>
+        <label>Kulüp Adi</label>
+        @Html.TextBoxFor(m => m.KULUPADİ, new { @class = "form-control" })
+        @Html.ValidationMessageFor(m => m.KULUPADİ, "", new { style = "color:red" })
+        @*<input type="text" class="form-control" name="KULUPADİ" />*@
+    </div>
 
-        <div>
-            <label>Kontenjan Miktarı</label>
-            @Html.TextBoxFor(m=>m.KULUPKONTENJAN, new { @class="form-control"})
-            @Html.ValidationMessageFor(m=>m.KULUPKONTENJAN, "", new { @style="color:red"})
-            @*<input type="text" class="form-control" name="KULUPKONTENJAN" />*@
-        </div>
+    <div>
+        <label>Kontenjan Miktarı</label>
+        @Html.TextBoxFor(m => m.KULUPKONTENJAN, new { @class = "form-control" })
+        @Html.ValidationMessageFor(m => m.KULUPKONTENJAN, "", new { @style = "color:red" })
+        @*<input type="text" class="form-control" name="KULUPKONTENJAN" />*@
+    </div>
 
-        <div style="margin-top:10px">
-            <button class="btn btn-info">Kulup Ekle</button>
+    <div style="margin-top:10px">
+        <button class="btn btn-info">Kulup Ekle</button>
 
-        </div>
-    </form>
+    </div>
+</form>
 
-   
+
+

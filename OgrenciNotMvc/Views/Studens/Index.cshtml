@@ -1,0 +1,39 @@
+﻿@model OgrenciNotMvc.ViewModels.StudentModel
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="search-main">
+
+    @using (Ajax.BeginForm("Index", "Studens", FormMethod.Post, new AjaxOptions { OnSuccess = "loadStudent" }))
+    {
+        <p>Öğrenci Adı : </p>
+        @Html.TextBoxFor(m => m.OGRAD)
+        <br />
+        <p>Ogrenci Soyad : </p>
+        @Html.TextBoxFor(m => m.OGRSOYAD)
+        <br />
+        <br />
+        <input type="submit" value="Ara" name="Gonder" />
+    }
+
+</div>
+
+
+
+<div ıd="ajax-main">
+    
+    @Html.Partial("_Customer", @Model);
+</div>
+
+@section scripts{
+    
+    <script type = "text/javascript">
+
+        function loadStudent(result){
+            $("#ajax-main").html(result);
+        }
+    </script>
+
+    }

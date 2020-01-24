@@ -1,5 +1,5 @@
 ﻿@using OgrenciNotMvc.Models.EntityFramework
-@model List<TBLDERSLER>
+@model List<TBLDERSLER> 
 @{
     ViewBag.Title = "Index";
     Layout = "~/Views/Shared/_Layout.cshtml";
@@ -52,8 +52,9 @@
 
                         <div class="modal-body">
                             <div class="form-group">
-                                <input type="text" class="form-control" name="DERSADI" id="DERSADI" placeholder="Ders Adını Giriniz">
+                                <input type="text" class=”input-validation-error” name="DERSADI" id="DERSADI" placeholder="Ders Adını Giriniz" >
                             </div>
+
                         </div>
 
                         <div class="modal-footer">

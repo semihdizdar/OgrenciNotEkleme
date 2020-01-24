@@ -11,7 +11,8 @@ namespace OgrenciNotMvc.Models.EntityFramework
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.ComponentModel.DataAnnotations;
+
     public partial class TBLDERSLER
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
@@ -21,6 +22,7 @@ namespace OgrenciNotMvc.Models.EntityFramework
         }
     
         public byte DERSID { get; set; }
+        [Required(ErrorMessage = "Please enter student name.")]
         public string DERSADI { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

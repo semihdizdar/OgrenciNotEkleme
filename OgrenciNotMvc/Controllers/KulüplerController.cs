@@ -28,7 +28,8 @@ namespace OgrenciNotMvc.Controllers
         {
             if (!ModelState.IsValid)
             {
-                return View("YeniKulüp");
+                //return View("YeniKulüp");
+                return View();
             }
 
             db.TBLKULUPLER.Add(p);

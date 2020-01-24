@@ -11,7 +11,8 @@ namespace OgrenciNotMvc.Models.EntityFramework
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.ComponentModel.DataAnnotations;
+
     public partial class TBLKULUPLER
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
@@ -21,6 +22,8 @@ namespace OgrenciNotMvc.Models.EntityFramework
         }
     
         public byte KULUPID { get; set; }
+        
+        [Required]
         public string KULUPADİ { get; set; }
         public Nullable<short> KULUPKONTENJAN { get; set; }
     

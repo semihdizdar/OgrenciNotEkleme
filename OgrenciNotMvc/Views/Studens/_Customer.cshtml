@@ -1,0 +1,44 @@
+﻿@model OgrenciNotMvc.ViewModels.StudentModel
+@using PagedList;
+@using PagedList.Mvc;
+
+
+
+
+<table class="table table-bordered">
+    <tr>
+        <th>OGRENCİ ID</th>
+        <th>OGRENCİ ADİ</th>
+        <th>OGRENCİ SOYAD</th>
+        <th>OGRENCİ TAM AD</th>
+        <th>OGRENCİ CİNSİYET</th>
+        <th>İşlemler</th>
+    </tr>
+    <tbody>
+        @foreach (var ogrenci in Model.Students)
+        {
+            <tr>
+                <td>@ogrenci.OGRENCIID</td>
+                <td>@ogrenci.OGRAD</td>
+                <td>@ogrenci.OGRSOYAD</td>
+                <td>@ogrenci.OGRTAMAD</td>
+                <td>@ogrenci.OGRCİNSİYET</td>
+
+                <td>
+                    <a href="/OgrenciListesi/Sil/@ogrenci.OGRENCIID" class="btn btn-danger">Sil</a>
+                    <a href="/OgrenciListesi/OgrenciGetir/@ogrenci.OGRENCIID" class="btn btn-warning">Güncelle</a>
+                </td>
+            </tr>
+
+        }
+
+    </tbody>
+</table>
+
+@Html.PagedListPager(Model.Students, page => Url.Action("Index", new RouteValueDictionary
+    {
+        {"Page",page},
+        {"OGRAD", Model.OGRAD },
+        {"OGRSOYAD", Model.OGRSOYAD}
+}
+),PagedListRenderOptions.EnableUnobtrusiveAjaxReplacing(new AjaxOptions { UpdateTargetId="ajax-main" }))
