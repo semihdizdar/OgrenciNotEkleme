@@ -12,6 +12,15 @@
           <Property Name="DERSID" Type="tinyint" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="DERSADI" Type="varchar" MaxLength="30" />
         </EntityType>
+        <EntityType Name="TBLKULLANICI">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="KullaniciAdi" Type="varchar" MaxLength="50" />
+          <Property Name="Sifre" Type="varchar" MaxLength="50" />
+          <Property Name="Yetki" Type="varchar" MaxLength="50" />
+        </EntityType>
         <EntityType Name="TBLKULUPLER">
           <Key>
             <PropertyRef Name="KULUPID" />
@@ -41,9 +50,9 @@
           <Property Name="OGRENCIID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="OGRAD" Type="varchar" MaxLength="20" />
           <Property Name="OGRSOYAD" Type="varchar" MaxLength="20" />
-          <Property Name="OGRFOTOGRAF" Type="varchar" MaxLength="20" />
+          <Property Name="OGRFOTOGRAF" Type="varchar" MaxLength="255" />
           <Property Name="OGRCİNSİYET" Type="varchar" MaxLength="5" />
-          <Property Name="OGRKULUP" Type="tinyint" />
+          <Property Name="OGRKULUP" Type="tinyint" Nullable="false" />
           <Property Name="OGRTAMAD" Type="varchar" MaxLength="41" StoreGeneratedPattern="Computed" />
         </EntityType>
         <Association Name="FK_TBLNOTLAR_TBLDERSLER">
@@ -71,7 +80,7 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_TBLOGRENCİLER_TBLKULUPLER">
-          <End Role="TBLKULUPLER" Type="Self.TBLKULUPLER" Multiplicity="0..1" />
+          <End Role="TBLKULUPLER" Type="Self.TBLKULUPLER" Multiplicity="1" />
           <End Role="TBLOGRENCİLER" Type="Self.TBLOGRENCİLER" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="TBLKULUPLER">
@@ -84,6 +93,7 @@
         </Association>
         <EntityContainer Name="DbMvcOkulModelStoreContainer">
           <EntitySet Name="TBLDERSLER" EntityType="Self.TBLDERSLER" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TBLKULLANICI" EntityType="Self.TBLKULLANICI" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="TBLKULUPLER" EntityType="Self.TBLKULUPLER" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="TBLNOTLAR" EntityType="Self.TBLNOTLAR" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="TBLOGRENCİLER" EntityType="Self.TBLOGRENCİLER" Schema="dbo" store:Type="Tables" />
@@ -112,6 +122,15 @@
           <Property Name="DERSID" Type="Byte" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="DERSADI" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
           <NavigationProperty Name="TBLNOTLAR" Relationship="Self.FK_TBLNOTLAR_TBLDERSLER" FromRole="TBLDERSLER" ToRole="TBLNOTLAR" />
+        </EntityType>
+        <EntityType Name="TBLKULLANICI">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="KullaniciAdi" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Sifre" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Yetki" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
         </EntityType>
         <EntityType Name="TBLKULUPLER">
           <Key>
@@ -147,7 +166,7 @@
           <Property Name="OGRSOYAD" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
           <Property Name="OGRFOTOGRAF" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
           <Property Name="OGRCİNSİYET" Type="String" MaxLength="5" FixedLength="false" Unicode="false" />
-          <Property Name="OGRKULUP" Type="Byte" />
+          <Property Name="OGRKULUP" Type="Byte" Nullable="false" />
           <Property Name="OGRTAMAD" Type="String" MaxLength="41" FixedLength="false" Unicode="false" annotation:StoreGeneratedPattern="Computed" />
           <NavigationProperty Name="TBLKULUPLER" Relationship="Self.FK_TBLOGRENCİLER_TBLKULUPLER" FromRole="TBLOGRENCİLER" ToRole="TBLKULUPLER" />
           <NavigationProperty Name="TBLNOTLAR" Relationship="Self.FK_TBLNOTLAR_TBLOGRENCİLER" FromRole="TBLOGRENCİLER" ToRole="TBLNOTLAR" />
@@ -165,7 +184,7 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_TBLOGRENCİLER_TBLKULUPLER">
-          <End Role="TBLKULUPLER" Type="Self.TBLKULUPLER" Multiplicity="0..1" />
+          <End Role="TBLKULUPLER" Type="Self.TBLKULUPLER" Multiplicity="1" />
           <End Role="TBLOGRENCİLER" Type="Self.TBLOGRENCİLER" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="TBLKULUPLER">
@@ -188,8 +207,9 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityContainer Name="DbMvcOkulEntities5" annotation:LazyLoadingEnabled="true">
+        <EntityContainer Name="DbMvcOkulEntities8" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="TBLDERSLER" EntityType="Self.TBLDERSLER" />
+          <EntitySet Name="TBLKULLANICI" EntityType="Self.TBLKULLANICI" />
           <EntitySet Name="TBLKULUPLER" EntityType="Self.TBLKULUPLER" />
           <EntitySet Name="TBLNOTLAR" EntityType="Self.TBLNOTLAR" />
           <EntitySet Name="TBLOGRENCİLER" EntityType="Self.TBLOGRENCİLER" />
@@ -211,12 +231,22 @@
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-        <EntityContainerMapping StorageEntityContainer="DbMvcOkulModelStoreContainer" CdmEntityContainer="DbMvcOkulEntities5">
+        <EntityContainerMapping StorageEntityContainer="DbMvcOkulModelStoreContainer" CdmEntityContainer="DbMvcOkulEntities8">
           <EntitySetMapping Name="TBLDERSLER">
             <EntityTypeMapping TypeName="DbMvcOkulModel.TBLDERSLER">
               <MappingFragment StoreEntitySet="TBLDERSLER">
                 <ScalarProperty Name="DERSID" ColumnName="DERSID" />
                 <ScalarProperty Name="DERSADI" ColumnName="DERSADI" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TBLKULLANICI">
+            <EntityTypeMapping TypeName="DbMvcOkulModel.TBLKULLANICI">
+              <MappingFragment StoreEntitySet="TBLKULLANICI">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="KullaniciAdi" ColumnName="KullaniciAdi" />
+                <ScalarProperty Name="Sifre" ColumnName="Sifre" />
+                <ScalarProperty Name="Yetki" ColumnName="Yetki" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

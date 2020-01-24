@@ -4,27 +4,73 @@
     ViewBag.Title = "Index";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
-
-<table class="table table-bordered">
-    <tr>
-
-        <th>Ders ID</th>
-        <th>Ders Adi</th>
-        <th>İşlemler</th>
-    </tr>
-    <tbody>
-        @foreach(var ders in Model)
-        {
+<html lang="en">
+<head>
+    <title>Ders Ekleme</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+<body>
+    <table class="table table-bordered">
         <tr>
-            <td> @ders.DERSID </td>
-            <td> @ders.DERSADI </td>
-            <td><a href="/Default/Sil/@ders.DERSID" class="btn btn-danger">Sil</a>
-                <a href="/Default/DersGetir/@ders.DERSID" class="btn btn-warning">Güncelle</a>           
-            </td>
+
+            <th>Ders ID</th>
+            <th>Ders Adi</th>
+            <th>İşlemler</th>
         </tr>
-        }
-    </tbody>
-</table>
+        <tbody>
+            @foreach (var ders in Model)
+            {
+                <tr>
+                    <td> @ders.DERSID </td>
+                    <td> @ders.DERSADI </td>
+                    <td>
+                        <a href="/Default/Sil/@ders.DERSID" class="btn btn-danger">Sil</a>
+                        <a href="/Default/DersGetir/@ders.DERSID" class="btn btn-warning">Güncelle</a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
 
-<a href="/Default/YeniKayit" class="btn btn-primary">Yeni Kayıt</a>
+    <!-- Trigger the modal with a button -->
+    <button type="button" class="btn btn-success" data-toggle="modal" data-target="#myModal">Ders Ekle</button>
+    <div class="container">
 
+
+        <!-- Modal -->
+        <form action="/Default/YeniKayit" method="post">
+            <div class="modal fade" id="myModal" role="dialog">
+                <div class="modal-dialog">
+
+                    <!-- Modal content-->
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal">&times;</button>
+                            <h4 class="modal-title">Ders Ekleme</h4>
+                        </div>
+
+                        <div class="modal-body">
+                            <div class="form-group">
+                                <input type="text" class="form-control" name="DERSADI" id="DERSADI" placeholder="Ders Adını Giriniz">
+                            </div>
+                        </div>
+
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-default" data-dismiss="modal">Kapat</button>
+                            <button type="submit" class="btn btn-success">Kaydet</button>
+                        </div>
+
+                    </div>
+
+
+                </div>
+            </div>
+        </form>
+
+    </div>
+
+    <!-- Ders Ekle Modal Bitiş -->
+
+</body>
+</html>

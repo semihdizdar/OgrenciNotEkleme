@@ -4,8 +4,9 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="d65d1a2499ac46a0bfc1ede308204368" Name="Diagram1">
-        <EntityTypeShape EntityType="DbMvcOkulModel.TBLDERSLER" Width="1.5" PointX="7.625" PointY="2.125" IsExpanded="true" />
+      <Diagram DiagramId="71758a627e784bfea1c29d638014daa5" Name="Diagram1">
+        <EntityTypeShape EntityType="DbMvcOkulModel.TBLDERSLER" Width="1.5" PointX="3" PointY="5.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="DbMvcOkulModel.TBLKULLANICI" Width="1.5" PointX="5.75" PointY="5.75" IsExpanded="true" />
         <EntityTypeShape EntityType="DbMvcOkulModel.TBLKULUPLER" Width="1.5" PointX="0.75" PointY="1.625" IsExpanded="true" />
         <EntityTypeShape EntityType="DbMvcOkulModel.TBLNOTLAR" Width="1.5" PointX="5.25" PointY="1" IsExpanded="true" />
         <EntityTypeShape EntityType="DbMvcOkulModel.TBLOGRENCİLER" Width="1.5" PointX="3" PointY="1.125" IsExpanded="true" />

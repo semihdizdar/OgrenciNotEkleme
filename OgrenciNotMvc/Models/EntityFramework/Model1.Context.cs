@@ -26,6 +26,7 @@ namespace OgrenciNotMvc.Models.EntityFramework
         }
     
         public virtual DbSet<TBLDERSLER> TBLDERSLER { get; set; }
+        public virtual DbSet<TBLKULLANICI> TBLKULLANICI { get; set; }
         public virtual DbSet<TBLKULUPLER> TBLKULUPLER { get; set; }
         public virtual DbSet<TBLNOTLAR> TBLNOTLAR { get; set; }
         public virtual DbSet<TBLOGRENCİLER> TBLOGRENCİLER { get; set; }

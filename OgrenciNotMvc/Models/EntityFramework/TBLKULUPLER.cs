@@ -11,8 +11,7 @@ namespace OgrenciNotMvc.Models.EntityFramework
 {
     using System;
     using System.Collections.Generic;
-    using System.ComponentModel.DataAnnotations;
-
+    
     public partial class TBLKULUPLER
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
@@ -20,13 +19,9 @@ namespace OgrenciNotMvc.Models.EntityFramework
         {
             this.TBLOGRENCİLER = new HashSet<TBLOGRENCİLER>();
         }
-
+    
         public byte KULUPID { get; set; }
-
-        //[StringLength(8, ErrorMessage = "Maksimum uzunluk 8 karakter")]
-        [Required(ErrorMessage = "Kulup Adını Boş Geçemezsiniz...")]
         public string KULUPADİ { get; set; }
-        [Required(ErrorMessage = "Kulup Kontenjan Boş Geçemezsiniz...")]
         public Nullable<short> KULUPKONTENJAN { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

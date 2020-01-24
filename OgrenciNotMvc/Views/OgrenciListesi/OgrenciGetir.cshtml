@@ -25,7 +25,15 @@
 
     <div class="form-group">
         @Html.Label("OGRENCİ CİNSİYET")
-        @Html.TextBoxFor(m => m.OGRCİNSİYET, new { @class = "form-control" })
+        @Html.DropDownList("OGRCİNSİYET",
+
+          new[]
+          {
+             new SelectListItem() {Value="Erkek", Text="Erkek"},
+             new SelectListItem() {Value="Bayan", Text = "Bayan"}
+          }
+
+          , "Cinsiyet Seçiniz...", new { @class = "form-control" })
     </div>
 
     <div class="form-group">

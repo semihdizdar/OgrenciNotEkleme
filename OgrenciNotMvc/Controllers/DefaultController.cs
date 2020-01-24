@@ -26,14 +26,15 @@ namespace OgrenciNotMvc.Controllers
         [HttpPost]
         public ActionResult YeniKayit(TBLDERSLER p)
         {
+          
+            //if (!ModelState.IsValid)
+            //{
+            //    return View("YeniKayit");
+            //}
 
-            if (!ModelState.IsValid)
-            {
-                return View("YeniKayit");
-            }
             db.TBLDERSLER.Add(p);
             db.SaveChanges();
-            return View();
+            return RedirectToAction("Index", "Default");
         }
 
         public ActionResult Sil(int id)

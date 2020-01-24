@@ -10,7 +10,7 @@ namespace OgrenciNotMvc.Controllers
     public class OgrenciListesiController : Controller
     {
         // GET: OgrenciListesi
-        
+
         DbMvcOkulEntities4 db = new DbMvcOkulEntities4();
         
         public ActionResult Index()
