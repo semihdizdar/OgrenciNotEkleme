@@ -6,43 +6,49 @@
     ViewBag.Title = "Index";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
+<div class="panel panel-primary">
+    <div class="panel-heading">
+        <h3 class="panel-title">Notlar</h3>
+    </div>
+    <div class="panel-body">
 
-<table class="table table-bordered">
-    <tr>
+        <table class="table table-bordered">
+            <tr>
 
-        <th>Öğrenci ID</th>
-        <th>Adı Soyadı</th>
-        <th>Ders Adı</th>
-        <th>VİZE</th>
-        <th>VİZE 2</th>
-        <th>FİNAL </th>
-        <th>PROJE</th>
-        <th>ORTALAMA</th>
-        <th>DURUM</th>
-        <th>Güncelle</th>
-    </tr>
-    <tbody>
-        @foreach (var notlar in Model)
-        {
-        <tr>
+                <th>Öğrenci ID</th>
+                <th>Adı Soyadı</th>
+                <th>Ders Adı</th>
+                <th>VİZE</th>
+                <th>VİZE 2</th>
+                <th>FİNAL </th>
+                <th>PROJE</th>
+                <th>ORTALAMA</th>
+                <th>DURUM</th>
+                <th>Güncelle</th>
+            </tr>
+            <tbody>
+                @foreach (var notlar in Model)
+                {
+                    <tr>
 
-            <td>@notlar.OGRID</td>
-            <td>@notlar.TBLOGRENCİLER.OGRTAMAD</td>
-            <td>@notlar.TBLDERSLER.DERSADI</td>
-            <td>@notlar.SINAV1</td>
-            <td>@notlar.SINAV2</td>
-            <td>@notlar.SINAV3</td>
-            <td>@notlar.PROJE</td>
-            <td>@notlar.ORTALAMA</td>
-            <td>@notlar.DURUM</td>
-            <td> <a href="/Notlar/NotGetir/@notlar.NOTID" class="btn btn-warning">Güncelle</a></td>
+                        <td>@notlar.OGRID</td>
+                        <td>@notlar.TBLOGRENCİLER.OGRTAMAD</td>
+                        <td>@notlar.TBLDERSLER.DERSADI</td>
+                        <td>@notlar.SINAV1</td>
+                        <td>@notlar.SINAV2</td>
+                        <td>@notlar.SINAV3</td>
+                        <td>@notlar.PROJE</td>
+                        <td>@notlar.ORTALAMA</td>
+                        <td>@notlar.DURUM</td>
+                        <td> <a href="/Notlar/NotGetir/@notlar.NOTID" class="btn btn-warning">Güncelle</a></td>
 
-        </tr>
-        }
+                    </tr>
+                }
 
-    </tbody>
-</table>
-
-<a href="/Notlar/NotGiris" class="btn btn-primary">Not Girişi Yap</a>
+            </tbody>
+        </table>
+        </div>
+    </div>
+        <a href="/Notlar/NotGiris" class="btn btn-primary">Not Girişi Yap</a>
 
 

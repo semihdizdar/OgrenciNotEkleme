@@ -1,5 +1,5 @@
 ﻿@using OgrenciNotMvc.Models.EntityFramework
-@model List<TBLDERSLER> 
+@model List<TBLDERSLER>
 @{
     ViewBag.Title = "Index";
     Layout = "~/Views/Shared/_Layout.cshtml";
@@ -11,27 +11,35 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
 </head>
 <body>
-    <table class="table table-bordered">
-        <tr>
 
-            <th>Ders ID</th>
-            <th>Ders Adi</th>
-            <th>İşlemler</th>
-        </tr>
-        <tbody>
-            @foreach (var ders in Model)
-            {
+    <div class="panel panel-primary">
+        <div class="panel-heading">
+            <h3 class="panel-title">Dersler</h3>
+        </div>
+        <div class="panel-body">
+            <table class="table table-bordered">
                 <tr>
-                    <td> @ders.DERSID </td>
-                    <td> @ders.DERSADI </td>
-                    <td>
-                        <a href="/Default/Sil/@ders.DERSID" class="btn btn-danger">Sil</a>
-                        <a href="/Default/DersGetir/@ders.DERSID" class="btn btn-warning">Güncelle</a>
-                    </td>
+
+                    <th>Ders ID</th>
+                    <th>Ders Adi</th>
+                    <th>İşlemler</th>
                 </tr>
-            }
-        </tbody>
-    </table>
+                <tbody>
+                    @foreach (var ders in Model)
+                    {
+                        <tr>
+                            <td> @ders.DERSID </td>
+                            <td> @ders.DERSADI </td>
+                            <td>
+                                <a href="/Default/Sil/@ders.DERSID" class="btn btn-danger">Sil</a>
+                                <a href="/Default/DersGetir/@ders.DERSID" class="btn btn-warning">Güncelle</a>
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
 
     <!-- Trigger the modal with a button -->
     <button type="button" class="btn btn-success" data-toggle="modal" data-target="#myModal">Ders Ekle</button>
@@ -52,7 +60,7 @@
 
                         <div class="modal-body">
                             <div class="form-group">
-                                <input type="text" class=”input-validation-error” name="DERSADI" id="DERSADI" placeholder="Ders Adını Giriniz" >
+                                <input type="text" class=”input-validation-error” name="DERSADI" id="DERSADI" placeholder="Ders Adını Giriniz">
                             </div>
 
                         </div>

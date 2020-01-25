@@ -3,37 +3,49 @@
     ViewBag.Title = "Index";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
+<div class="panel panel-primary">
+    <div class="panel-heading">
+        <h3 class="panel-title">Ogrenci Arama</h3>
+    </div>
+    <div class="panel-body">
+        <div class="search-main">
 
-<div class="search-main">
+            @using (Ajax.BeginForm("Index", "Studens", FormMethod.Post, new AjaxOptions { OnSuccess = "loadStudent" }))
+            {
 
-    @using (Ajax.BeginForm("Index", "Studens", FormMethod.Post, new AjaxOptions { OnSuccess = "loadStudent" }))
-    {
-        <p>Öğrenci Adı : </p>
-        @Html.TextBoxFor(m => m.OGRAD)
-        <br />
-        <p>Ogrenci Soyad : </p>
-        @Html.TextBoxFor(m => m.OGRSOYAD)
-        <br />
-        <br />
-        <input type="submit" value="Ara" name="Gonder" />
-    }
+                <div class="input-group">
+                    <span class="input-group-addon" id="basic-addon1">Öğrenci Adı</span>
+                    <input type="text" name="OGRAD" class="form-control" placeholder="" aria-describedby="basic-addon1">
+                </div>
 
+                <br />
+
+                <div class="input-group">
+                    <span class="input-group-addon" id="basic-addon1">Öğrenci Soyadı</span>
+                    <input type="text" name="OGRSOYAD" class="form-control" placeholder="" aria-describedby="basic-addon1">
+                </div>
+                <br />
+                <input type="submit" value="Ogrenci Ara" name="Gonder" />
+            }
+        </div>
+    </div>
 </div>
 
+<br />
 
 
 <div ıd="ajax-main">
-    
+
     @Html.Partial("_Customer", @Model);
 </div>
 
 @section scripts{
-    
-    <script type = "text/javascript">
 
-        function loadStudent(result){
+    <script type="text/javascript">
+
+        function loadStudent(result) {
             $("#ajax-main").html(result);
         }
     </script>
 
-    }
+}

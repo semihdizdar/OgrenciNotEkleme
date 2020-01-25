@@ -19,19 +19,33 @@ namespace OgrenciNotMvc.Controllers
         }
 
         [HttpGet]
-        public ActionResult NotGiris()
+        public ActionResult NotGiris(int id)
         {
+            //var ogrenci = db.TBLNOTLAR.Find(id);
 
+            //List<SelectListItem> degerler = (from i in db.TBLDERSLER.ToList()
+
+            //                                 select new SelectListItem
+            //                                 {
+            //                                     Text = i.DERSADI,
+            //                                     Value = i.DERSID.ToString()
+
+            //                                 }
+            //                                ).ToList();
+
+            //ViewBag.dersadı = degerler;
+            //Emrah abiyle bak !!!
+
+            ViewBag.ogrenciid = id; 
             return View();
         }
 
         [HttpPost]
         public ActionResult NotGiris(TBLNOTLAR tbl)
         {
-            db.TBLNOTLAR.Add(tbl);
-            
-            db.SaveChanges();
 
+            db.TBLNOTLAR.Add(tbl);
+            db.SaveChanges();
             return RedirectToAction("Index");
         }
 

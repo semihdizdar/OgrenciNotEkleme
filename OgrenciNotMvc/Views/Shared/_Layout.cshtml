@@ -17,8 +17,9 @@
     <!-- Our Custom CSS -->
     <link href="~/Bootstrap_Dosyalar1/Dosyalar1/StyleSheet2.css" rel="stylesheet" />
     <link href="~/Content/PagedList.css" rel="stylesheet" />
-
+    <link href="~/Content/Chosen/chosen.min.css" rel="stylesheet" />
 </head>
+<link href="~/Content/Chosen/chosen.min.css" rel="stylesheet" />
 
 <body>
 
@@ -32,7 +33,7 @@
 
             <ul class="list-unstyled components">
                 <li>
-                    <a href="/OgrenciListesi/Index">
+                    <a href="/Studens">
                         <i class="fas fa-image"></i>
                         Ogrenci Listesi
                     </a>
@@ -77,8 +78,8 @@
         <!-- Page Content  -->
         <div id="content">
             @RenderBody()
-     
-            @RenderSection("scripts", required:false)
+
+            @RenderSection("scripts", required: false)
 
         </div>
 
@@ -97,5 +98,7 @@
         });
     </script>
 
+    <!-- Dropdownlist chose -->
+    <script src="~/Scripts/chosen.jquery.min.js"></script>
 </body>
 </html>
