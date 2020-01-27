@@ -10,11 +10,14 @@ using PagedList.Mvc;
 
 namespace OgrenciNotMvc.Controllers
 {
+    [UserAuthorizeController]
     public class StudensController : Controller
     {
         // GET: Studens
         public ActionResult Index(StudentModel model)
         {
+   
+
             int pageIndex = model.Page ?? 1;
             DbMvcOkulEntities4 db = new DbMvcOkulEntities4();
             model.Students = (from ogrenci in db.TBLOGRENCİLER.Where(f =>

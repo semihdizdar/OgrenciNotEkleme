@@ -48,6 +48,9 @@
     <Reference Include="Elmah, Version=1.2.14706.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\elmah.corelibrary.1.2.2\lib\Elmah.dll</HintPath>
     </Reference>
+    <Reference Include="Elmah.Mvc, Version=2.1.2.1389, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Elmah.Mvc.2.1.2\lib\net40\Elmah.Mvc.dll</HintPath>
+    </Reference>
     <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
       <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
     </Reference>
@@ -208,13 +211,12 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\DefaultController.cs" />
-    <Compile Include="Controllers\DersTestController.cs" />
-    <Compile Include="Controllers\ErrorController.cs" />
     <Compile Include="Controllers\KulüplerController.cs" />
     <Compile Include="Controllers\NotHesapController.cs" />
     <Compile Include="Controllers\NotlarController.cs" />
     <Compile Include="Controllers\OgrenciListesiController.cs" />
     <Compile Include="Controllers\StudensController.cs" />
+    <Compile Include="Controllers\UserAuthorizeController.cs" />
     <Compile Include="Controllers\UyeGirisController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -256,6 +258,7 @@
     <Compile Include="ViewModels\StudentList.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="images\student-images\3c7789ec-0d8b-4297-9224-9d886be35dbf_0.jpg" />
     <Content Include="App_Readme\Elmah.SqlServer.sql" />
     <Content Include="App_Readme\Elmah.SqlServer.txt" />
     <Content Include="App_Readme\Elmah.txt" />
@@ -797,10 +800,11 @@
     <Content Include="Views\Kulüpler\YeniKulüp.cshtml" />
     <Content Include="Views\Studens\Index.cshtml" />
     <Content Include="Views\Studens\_Customer.cshtml" />
+    <Content Include="Views\UyeGiris\Cıkıs.cshtml" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="App_Data\student-images\" />
-    <Folder Include="Views\DersTest\" />
+    <Folder Include="App_Data\" />
+    <Folder Include="Views\UserAuthorize\" />
     <Folder Include="Views\VeritabaniContext\" />
   </ItemGroup>
   <ItemGroup>

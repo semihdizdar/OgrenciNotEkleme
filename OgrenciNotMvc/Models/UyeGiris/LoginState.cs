@@ -20,6 +20,7 @@ namespace OgrenciNotMvc.Models.UyeGiris
             TBLKULLANICI resultUser = db.TBLKULLANICI.Where(x => x.KullaniciAdi.Equals(user) && x.Sifre.Equals(pass)).FirstOrDefault();
             if(resultUser != null)
             {
+               
                 return true;
             }
             return false;

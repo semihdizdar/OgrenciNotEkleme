@@ -19,7 +19,9 @@ namespace OgrenciNotMvc.Controllers
 
         [HttpGet]
         public ActionResult Index(int sonuc = 0)
+
         {
+
             ViewBag.total = sonuc;
             return View();
         }

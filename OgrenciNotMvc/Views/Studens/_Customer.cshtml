@@ -27,10 +27,14 @@
                         <td>@ogrenci.OGRCİNSİYET</td>
 
                         <td>
-                            <a href="/OgrenciListesi/Sil/@ogrenci.OGRENCIID" class="btn btn-danger">Sil</a>
+                            @Html.ActionLink(
+                                "Sil",
+                                "../OgrenciListesi/Sil",
+                                new { id = ogrenci.OGRENCIID },
+                                new { onclick = "return confirm('Are you sure you wish to delete this student?');", @class = "btn btn-danger" })
+                            @*<a href="/OgrenciListesi/Sil/@ogrenci.OGRENCIID" class="btn btn-danger">Sil</a>*@
                             <a href="/OgrenciListesi/OgrenciGetir/@ogrenci.OGRENCIID" class="btn btn-warning">Güncelle</a>
                             <a href="Notlar/NotGiris/@ogrenci.OGRENCIID" class="btn btn-primary">Not Ekle</a>
-                            
                         </td>
                     </tr>
 

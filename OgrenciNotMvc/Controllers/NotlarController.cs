@@ -8,12 +8,14 @@ using OgrenciNotMvc.Models;
 
 namespace OgrenciNotMvc.Controllers
 {
+    [UserAuthorizeController]
     public class NotlarController : Controller
     {
         // GET: Notlar
         DbMvcOkulEntities4 db = new DbMvcOkulEntities4();
         public ActionResult Index()
         {
+
             var notlar = db.TBLNOTLAR.ToList();
             return View(notlar);
         }
@@ -21,6 +23,8 @@ namespace OgrenciNotMvc.Controllers
         [HttpGet]
         public ActionResult NotGiris(int id)
         {
+
+          
             //var ogrenci = db.TBLNOTLAR.Find(id);
 
             //List<SelectListItem> degerler = (from i in db.TBLDERSLER.ToList()
@@ -51,15 +55,16 @@ namespace OgrenciNotMvc.Controllers
 
         public ActionResult NotGetir(int id)
         {
+
             var notlar = db.TBLNOTLAR.Find(id);
-   
             return View("NotGetir", notlar);
         }
 
         [HttpPost]
         public ActionResult NotGetir(Hesaplamaİslemleri hesapla, TBLNOTLAR p, int SINAV1 = 0, int SINAV2 = 0, int SINAV3 = 0, int Proje=0) 
         {
-            if(hesapla.islem == "HESAPLA")
+
+            if (hesapla.islem == "HESAPLA")
             {
                 // işlem 1
                 int ORTALAMA = (SINAV1 + SINAV2 + SINAV3 + Proje) / 4;

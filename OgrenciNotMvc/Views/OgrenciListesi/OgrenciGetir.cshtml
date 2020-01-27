@@ -9,6 +9,10 @@
 
 {
     <div class="form-group">
+        <img src="@Url.Content("~/images/student-images/" + System.IO.Path.GetFileName(Model.OGRFOTOGRAF))" height="150" width="150" class="img-circle" />        
+    </div>
+
+    <div class="form-group">
         @Html.Label("OGRENCİ ID")
         @Html.TextBoxFor(m => m.OGRENCIID, new { @class = "form-control", @readonly = "readonly" })
     </div>
@@ -36,10 +40,6 @@
           , "Cinsiyet Seçiniz...", new { @class = "form-control" })
     </div>
 
-    <div class="form-group">
-        @Html.Label("OGRENCİ FOTOGRAF")
-        @Html.TextBoxFor(m => m.OGRFOTOGRAF, new { @class = "form-control" })
-    </div>
     <div class="form-group">
         @Html.Label("OGRENCİ KULÜP")
         @Html.DropDownListFor(m => m.TBLKULUPLER.KULUPID, (List<SelectListItem>)ViewBag.dgr, new { @class = "form-control" })

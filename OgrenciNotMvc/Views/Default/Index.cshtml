@@ -12,6 +12,8 @@
 </head>
 <body>
 
+  
+
     <div class="panel panel-primary">
         <div class="panel-heading">
             <h3 class="panel-title">Dersler</h3>
@@ -28,10 +30,17 @@
                     @foreach (var ders in Model)
                     {
                         <tr>
+
                             <td> @ders.DERSID </td>
                             <td> @ders.DERSADI </td>
                             <td>
-                                <a href="/Default/Sil/@ders.DERSID" class="btn btn-danger">Sil</a>
+                                @*<a href="/Default/Sil/@ders.DERSID" class="btn btn-danger">Sil</a>*@
+                                @Html.ActionLink(
+                                "Sil",
+                                "Sil",
+                                new { id = @ders.DERSID },
+                                new { onclick = "return confirm('Are you sure you wish to delete this article?');", @class = "btn btn-danger" })
+
                                 <a href="/Default/DersGetir/@ders.DERSID" class="btn btn-warning">Güncelle</a>
                             </td>
                         </tr>
@@ -41,11 +50,18 @@
         </div>
     </div>
 
-    <!-- Trigger the modal with a button -->
-    <button type="button" class="btn btn-success" data-toggle="modal" data-target="#myModal">Ders Ekle</button>
+    @{
+        if (Session["Yetki"].ToString() == "admin")
+        {
+            <!-- Trigger the modal with a button -->
+            <button type="button" class="btn btn-success" data-toggle="modal" data-target="#myModal">Ders Ekle</button>
+
+        }
+    }
+
+
+
     <div class="container">
-
-
         <!-- Modal -->
         <form action="/Default/YeniKayit" method="post">
             <div class="modal fade" id="myModal" role="dialog">

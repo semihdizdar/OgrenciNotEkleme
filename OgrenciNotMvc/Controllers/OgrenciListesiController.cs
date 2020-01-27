@@ -7,16 +7,16 @@ using System.Web.Mvc;
 using OgrenciNotMvc.Models.EntityFramework;
 namespace OgrenciNotMvc.Controllers
 {
+    [UserAuthorizeController]
     public class OgrenciListesiController : Controller
     {
         // GET: OgrenciListesi
 
         DbMvcOkulEntities4 db = new DbMvcOkulEntities4();
-        
+
         public ActionResult Index()
         {
             var ogrenci = db.TBLOGRENCİLER.ToList();
-            
             return View(ogrenci);
         }
 
@@ -25,8 +25,6 @@ namespace OgrenciNotMvc.Controllers
         [HttpGet]
         public ActionResult OgrenciEkle()
         {
-
-
             List<SelectListItem> degerler = (from i in db.TBLKULUPLER.ToList()
 
                                              select new SelectListItem
@@ -35,7 +33,7 @@ namespace OgrenciNotMvc.Controllers
                                                  Value = i.KULUPID.ToString()
 
                                              }
-                                             ).ToList();
+                                                       ).ToList();
 
             ViewBag.dgr = degerler;
             return View();
@@ -45,29 +43,21 @@ namespace OgrenciNotMvc.Controllers
         public ActionResult OgrenciEkle(TBLOGRENCİLER p, HttpPostedFileBase file, FormCollection form)
         {
 
-            //if (!ModelState.IsValid)
-            //{
-            //    return View("OgrenciEkle");
-            //}
-
-
-
             string photoPath = "unknown";
             //file upload
             if (file != null && file.ContentLength > 0)
-            {   
-                var path = Path.Combine(Server.MapPath("~/App_Data/student-images/"), Guid.NewGuid().ToString() + "_" + file.FileName);
+            {
                 photoPath = Guid.NewGuid().ToString() + "_" + file.FileName;
+                var path = Path.Combine(Server.MapPath("~/images/student-images"), photoPath);
                 file.SaveAs(path);
                 TempData["result"] = "Yükleme Başarılı.";
             }
-            
-            //var klp = db.TBLKULUPLER.Where(m => m.KULUPADİ == p.TBLKULUPLER.KULUPADİ).FirstOrDefault();
-            //p.TBLKULUPLER.KULUPADİ = klp.KULUPADİ;
-            p.OGRFOTOGRAF = photoPath;
-            string secilenKulup = form["secilenKulup"];
 
-            var klp = db.TBLKULUPLER.Where(m => m.KULUPADİ == secilenKulup).FirstOrDefault();
+    
+            p.OGRFOTOGRAF = photoPath;
+            byte secilenKulup = Convert.ToByte(form["secilenKulup"]);
+
+            var klp = db.TBLKULUPLER.Where(m => m.KULUPID == secilenKulup).FirstOrDefault();
             p.OGRKULUP = klp.KULUPID;
 
             db.TBLOGRENCİLER.Add(p);
@@ -78,16 +68,25 @@ namespace OgrenciNotMvc.Controllers
         public ActionResult Sil(int id)
         {
 
-            var ogrenci = db.TBLOGRENCİLER.Find(id);
-            db.TBLOGRENCİLER.Remove(ogrenci);
-            db.SaveChanges();
-            return RedirectToAction("Index");
+            try
+            {
+                var ogrenci = db.TBLOGRENCİLER.Find(id);
+                db.TBLOGRENCİLER.Remove(ogrenci);
+                db.SaveChanges();
+                return RedirectToAction("Index", "Studens");
+            }
+            catch (Exception ex)
+            {
+                Elmah.ErrorSignal.FromCurrentContext().Raise(ex);
+            }
+
+            return RedirectToAction("Index", "Studens");
         }
 
         public ActionResult OgrenciGetir(int id)
         {
-            var ogrenci = db.TBLOGRENCİLER.Find(id);
 
+            var ogrenci = db.TBLOGRENCİLER.Find(id);
 
             //Ogrenci güncelleme ekranındaki dropdownlist e veri aktarımı için kullanılır...
             List<SelectListItem> degerler = (from i in db.TBLKULUPLER.ToList()

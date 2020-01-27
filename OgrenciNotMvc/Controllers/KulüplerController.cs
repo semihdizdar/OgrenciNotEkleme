@@ -7,12 +7,14 @@ using OgrenciNotMvc.Models.EntityFramework;
 
 namespace OgrenciNotMvc.Controllers
 {
+    [UserAuthorizeController]
     public class KulüplerController : Controller
     {
         // GET: Kulüpler
         DbMvcOkulEntities4 db = new DbMvcOkulEntities4();
         public ActionResult Index()
         {
+           
             var kulupler = db.TBLKULUPLER.ToList();
             return View(kulupler);
         }
@@ -20,12 +22,14 @@ namespace OgrenciNotMvc.Controllers
         [HttpGet]
         public ActionResult YeniKulüp()
         {
+
             return View();
         }
 
         [HttpPost]
         public ActionResult YeniKulüp(TBLKULUPLER p)
         {
+
             if (!ModelState.IsValid)
             {
                 //return View("YeniKulüp");
@@ -39,6 +43,7 @@ namespace OgrenciNotMvc.Controllers
 
         public ActionResult Sil(int id)
         {
+
             try
             {
                 var kulup = db.TBLKULUPLER.Find(id);
@@ -61,11 +66,11 @@ namespace OgrenciNotMvc.Controllers
 
         public ActionResult Guncelle(TBLKULUPLER p)
         {
-
+  
             //if (!ModelState.IsValid)
             //{
             //    return View("Index");
-            //}   
+            //}
 
             var klp = db.TBLKULUPLER.Find(p.KULUPID);
             klp.KULUPADİ = p.KULUPADİ;
